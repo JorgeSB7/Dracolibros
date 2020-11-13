@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#7DACD1"
-    tools:context=".LogoActivity">
+    android:background="#B86B37"
+    tools:context=".views.LogoActivity">
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="377dp"
-        android:layout_height="72dp"
+        android:layout_height="50dp"
         android:fontFamily="sans-serif"
         android:text="DRACOLIBROS"
         android:textAlignment="center"
@@ -21,6 +21,23 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView"
         tools:text="DRACOLIBROS" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="377dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="48dp"
+        android:fontFamily="sans-serif"
+        android:text="Jorge Sánchez Bonilla"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.25"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        tools:text="Jorge Sánchez Bonilla" />
 
     <ImageView
         android:id="@+id/imageView"
