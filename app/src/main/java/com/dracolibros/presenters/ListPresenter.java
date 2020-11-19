@@ -10,4 +10,11 @@ public class ListPresenter implements ListInterface.Presenter {
     public void onClickFloatingButton() {
         view.StartFormActivity();
     }
+
+    @Override
+    public void onClickSearchButton() { view.StartSearchActivity(); }
+
+    @Override
+    public void onClickAboutAPPButton() { view.StartAboutAPPActivity(); }
+
 }

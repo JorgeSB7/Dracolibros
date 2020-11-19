@@ -13,10 +13,10 @@
     -->
     <TextView
         android:id="@+id/Date"
-        style="@style/CodeFont"
+        style="@style/CodeFont.Red"
         android:layout_marginTop="130dp"
         android:layout_marginBottom="30dp"
-        android:text="10 resultados"
+        android:text="@string/_10_resultados"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/recyclerView"

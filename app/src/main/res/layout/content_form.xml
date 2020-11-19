@@ -20,11 +20,11 @@
             android:layout_height="match_parent">
 
             <ImageView
-                android:id="@+id/imageView7"
+                android:id="@+id/bookname"
                 android:layout_width="41dp"
                 android:layout_height="41dp"
                 android:layout_marginTop="240dp"
-                app:layout_constraintEnd_toStartOf="@+id/textInputLayout11"
+                app:layout_constraintEnd_toStartOf="@+id/namename"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/libro__1_"
@@ -42,40 +42,40 @@
                 tools:ignore="MissingConstraints" />
 
             <ImageView
-                android:id="@+id/imageView6"
+                android:id="@+id/bookauthor"
                 android:layout_width="41dp"
                 android:layout_height="41dp"
                 android:layout_marginTop="308dp"
-                app:layout_constraintEnd_toStartOf="@+id/textInputLayout7"
+                app:layout_constraintEnd_toStartOf="@+id/AuAu"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/usuario"
                 tools:ignore="MissingConstraints" />
 
             <ImageView
-                android:id="@+id/imageView5"
+                android:id="@+id/bookcode"
                 android:layout_width="41dp"
                 android:layout_height="41dp"
                 android:layout_marginTop="380dp"
-                app:layout_constraintEnd_toStartOf="@+id/textInputLayout5"
+                app:layout_constraintEnd_toStartOf="@+id/codecode"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/codigo_binario"
                 tools:ignore="MissingConstraints" />
 
             <ImageView
-                android:id="@+id/imageView3"
+                android:id="@+id/bookISBN"
                 android:layout_width="41dp"
                 android:layout_height="41dp"
                 android:layout_marginTop="448dp"
-                app:layout_constraintEnd_toStartOf="@+id/textInputLayout"
+                app:layout_constraintEnd_toStartOf="@+id/ISBN"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/etiqueta_del_codigo_de_barras"
                 tools:ignore="MissingConstraints" />
 
             <ImageView
-                android:id="@+id/imageView4"
+                android:id="@+id/fantasy"
                 android:layout_width="38dp"
                 android:layout_height="37dp"
                 android:layout_marginTop="532dp"
@@ -87,7 +87,7 @@
                 tools:ignore="MissingConstraints" />
 
             <ImageButton
-                android:id="@+id/imageButton3"
+                android:id="@+id/deleteimg"
                 android:layout_width="85dp"
                 android:layout_height="100dp"
                 android:layout_marginStart="27dp"
@@ -110,7 +110,7 @@
                 tools:ignore="MissingConstraints" />
 
             <ImageButton
-                android:id="@+id/imageButton"
+                android:id="@+id/delete"
                 android:layout_width="85dp"
                 android:layout_height="100dp"
                 android:layout_marginTop="600dp"
@@ -124,7 +124,7 @@
                 tools:ignore="MissingConstraints" />
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayout11"
+                android:id="@+id/namename"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="230dp"
@@ -141,7 +141,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayout7"
+                android:id="@+id/AuAu"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="300dp"
@@ -158,7 +158,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayout5"
+                android:id="@+id/codecode"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="370dp"
@@ -175,7 +175,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayout"
+                android:id="@+id/ISBN"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="440dp"
@@ -192,7 +192,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <ImageView
-                android:id="@+id/imageView2"
+                android:id="@+id/Image"
                 android:layout_width="148dp"
                 android:layout_height="146dp"
                 android:layout_marginTop="64dp"
@@ -203,7 +203,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <CheckBox
-                android:id="@+id/checkBox"
+                android:id="@+id/available"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="192dp"
@@ -227,7 +227,7 @@
                 tools:ignore="MissingConstraints" />
 
             <ImageButton
-                android:id="@+id/imageButton4"
+                android:id="@+id/plus"
                 android:layout_width="39dp"
                 android:layout_height="36dp"
                 android:layout_marginTop="532dp"
@@ -239,7 +239,7 @@
                 app:srcCompat="@drawable/mas" />
 
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/Date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="64dp"
@@ -251,7 +251,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayout3"
+                android:id="@+id/DDate"
                 android:layout_width="135dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="100dp"

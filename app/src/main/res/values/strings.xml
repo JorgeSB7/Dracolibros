@@ -1,16 +1,30 @@
 <resources>
-    <string name="app_name">Dracolibros</string>
-    <string name="action_settings">Ajustes</string>
+    <string name="app_name" translatable="false">Dracolibros</string>
+    <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
+    <string name="first_fragment_label" translatable="false">First Fragment</string>
+    <string name="second_fragment_label" translatable="false">Second Fragment</string>
+    <string name="next" translatable="false">Next</string>
+    <string name="previous" translatable="false">Previous</string>
 
-    <string name="hello_first_fragment">Hello first fragment</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
-    <string name="title_activity_logo">DracoLibros</string>
-    <string name="dummy_button">Dummy Button</string>
-    <string name="dummy_content">DUMMY\nCONTENT</string>
-    <string name="title_activity_form">Form</string>
+    <string name="hello_first_fragment" translatable="false">Hello first fragment</string>
+    <string name="hello_second_fragment" translatable="false">Hello second fragment. Arg: %1$s</string>
+    <string name="title_activity_logo" translatable="false">DracoLibros</string>
+    <string name="dummy_button" translatable="false">Dummy Button</string>
+    <string name="dummy_content" translatable="false">DUMMY\nCONTENT</string>
+    <string name="title_activity_form" translatable="false">Form</string>
+    <string name="_10_resultados" translatable="false">10 resultados</string>
+    <string name="Form">New Form</string>
+    <string name="search">search</string>
+    <string name="Ordenar">Order</string>
+    <string name="Configuración">Setting</string>
+    <string name="Ayuda">Help</string>
+    <string name="AppDL">About AppDracolibros</string>
+    <string name="title_activity_search">Search</string>
+    <string name="title_activity_about_a_p_p" translatable="false">AppDracolibros</string>
+    <string name="email">Contact: DracoLibros_De@gmail.com</string>
+    <string name="dracolibrosDES" translatable="false">DRACOLIBROS</string>
+    <string name="NameDES">Name: Jorge Sánchez Bonilla</string>
+    <string name="developerDES">DEVELOPER</string>
+
 </resources>

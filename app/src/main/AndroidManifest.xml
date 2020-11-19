@@ -10,9 +10,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Dracolibros">
         <activity
+            android:name=".views.AboutAPPActivity"
+            android:label="@string/title_activity_about_a_p_p"
+            android:theme="@style/Theme.Dracolibros.NoActionBar"></activity>
+        <activity
+            android:name=".views.SearchActivity"
+            android:label="@string/title_activity_search"
+            android:theme="@style/Theme.Dracolibros.NoActionBar" />
+        <activity
             android:name=".views.FormActivity"
             android:label="@string/title_activity_form"
-            android:theme="@style/Theme.Dracolibros.NoActionBar"></activity>
+            android:theme="@style/Theme.Dracolibros.NoActionBar" />
         <activity
             android:name=".views.LogoActivity"
             android:label="@string/title_activity_logo"
@@ -26,7 +34,7 @@
         <activity
             android:name=".views.ListBookActivity"
             android:label="@string/app_name"
-            android:theme="@style/Theme.Dracolibros.NoActionBar"></activity>
+            android:theme="@style/Theme.Dracolibros.NoActionBar" />
     </application>
 
 </manifest>

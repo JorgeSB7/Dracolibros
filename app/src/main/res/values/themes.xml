@@ -34,4 +34,23 @@
         <item name="fullscreenBackgroundColor">@color/light_blue_600</item>
         <item name="fullscreenTextColor">@color/light_blue_A200</item>
     </style>
+
+    <!-- Nuevos temas añadidos
+    -->
+    <style name="CodeFont" parent="@android:style/TextAppearance.Medium">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">#00FF00</item>
+        <item name="android:typeface">monospace</item>
+    </style>
+
+    <style name="CodeFont.Red">
+        <item name="android:textColor">#FF0000</item>
+    </style>
+
+    <style name="AboutAPP">
+        <item name="android:textColor">#113455</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
 </resources>

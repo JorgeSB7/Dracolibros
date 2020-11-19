@@ -11,7 +11,6 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 
 import com.dracolibros.R;
 import com.dracolibros.interfaces.ListInterface;
@@ -37,6 +36,7 @@ public class ListBookActivity extends AppCompatActivity implements ListInterface
         setSupportActionBar(toolbar);
         presenter = new ListPresenter(this);
 
+        Log.d(TAG, "Starting FloatingActionButton");
         FloatingActionButton newbook = findViewById(R.id.newbook);
         newbook.setOnClickListener(new View.OnClickListener() {
         @Override
@@ -84,20 +84,38 @@ public class ListBookActivity extends AppCompatActivity implements ListInterface
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            Log.d(TAG, "Starting Settings");
+            return true;
+        }
+
+        if (id == R.id.action_search) {
+            Log.d(TAG, "Starting search");
+            presenter.onClickSearchButton();
+            return true;
+        }
+
+        if (id == R.id.action_Help) {
+            Log.d(TAG, "Starting Help");
+            return true;
+        }
+
+        if (id == R.id.action_Order) {
+            Log.d(TAG, "Starting Order");
+            return true;
+        }
+
+        if (id == R.id.action_AppDL) {
+            Log.d(TAG, "Starting AppDL");
+            presenter.onClickAboutAPPButton();
             return true;
         }
 
@@ -107,6 +125,18 @@ public class ListBookActivity extends AppCompatActivity implements ListInterface
     @Override
     public void StartFormActivity() {
         Intent intent = new Intent(getApplicationContext(), FormActivity.class);
+        startActivity(intent);
+    }
+
+    @Override
+    public void StartSearchActivity() {
+        Intent intent = new Intent(getApplicationContext(), SearchActivity.class);
+        startActivity(intent);
+    }
+
+    @Override
+    public void StartAboutAPPActivity() {
+        Intent intent = new Intent(getApplicationContext(), AboutAPPActivity.class);
         startActivity(intent);
     }
 }
