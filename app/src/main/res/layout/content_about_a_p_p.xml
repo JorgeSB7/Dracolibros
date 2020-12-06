@@ -2,9 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    style="@style/Screens"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#D8BA9F"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
     <ScrollView
@@ -29,12 +29,11 @@
 
             <TextView
                 android:id="@+id/ContactDES"
-                style="@style/AboutAPP"
+                style="@style/AboutAPP.size"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:text="@string/email"
-                android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/NameDES" />
@@ -64,12 +63,11 @@
 
             <TextView
                 android:id="@+id/NameDES"
-                style="@style/AboutAPP"
+                style="@style/AboutAPP.size"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:text="@string/NameDES"
-                android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/developerDES" />
@@ -84,7 +82,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/ContactDES"
-                app:srcCompat="@drawable/seo" />
+                app:srcCompat="@drawable/desarrollo" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

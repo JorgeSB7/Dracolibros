@@ -7,7 +7,7 @@
     android:layout_height="wrap_content">
 
     <ImageView
-        android:id="@+id/photo"
+        android:id="@+id/imgbook"
         android:layout_width="100dp"
         android:layout_height="100dp"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -15,23 +15,23 @@
         tools:src="@tools:sample/avatars"/>
 
     <TextView
-        android:id="@+id/firstName"
+        android:id="@+id/Nameb"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="32dp"
-        app:layout_constraintBottom_toBottomOf="@id/photo"
-        app:layout_constraintLeft_toRightOf="@id/photo"
-        app:layout_constraintTop_toTopOf="@id/photo"
+        app:layout_constraintBottom_toBottomOf="@id/imgbook"
+        app:layout_constraintLeft_toRightOf="@id/imgbook"
+        app:layout_constraintTop_toTopOf="@id/imgbook"
         tools:text="@tools:sample/last_names"/>
 
     <TextView
-        android:id="@+id/firstName2"
+        android:id="@+id/Authorb"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="32dp"
-        app:layout_constraintBottom_toBottomOf="@id/photo"
-        app:layout_constraintLeft_toRightOf="@id/photo"
-        app:layout_constraintTop_toTopOf="@id/photo"
+        app:layout_constraintBottom_toBottomOf="@id/imgbook"
+        app:layout_constraintLeft_toRightOf="@id/imgbook"
+        app:layout_constraintTop_toTopOf="@id/imgbook"
         app:layout_constraintVertical_bias="0.802"
         tools:text="@tools:sample/last_names" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    style="@style/Screens"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
@@ -9,7 +10,6 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#D8BA9F"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,92 +20,173 @@
             android:layout_height="match_parent">
 
             <ImageView
-                android:id="@+id/bookname"
-                android:layout_width="41dp"
-                android:layout_height="41dp"
-                android:layout_marginTop="240dp"
-                app:layout_constraintEnd_toStartOf="@+id/namename"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/libro__1_"
-                tools:ignore="MissingConstraints" />
-
-            <ImageView
-                android:id="@+id/imageView8"
-                android:layout_width="41dp"
-                android:layout_height="41dp"
-                android:layout_marginStart="184dp"
-                android:layout_marginTop="112dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/calendario"
-                tools:ignore="MissingConstraints" />
-
-            <ImageView
-                android:id="@+id/bookauthor"
-                android:layout_width="41dp"
-                android:layout_height="41dp"
-                android:layout_marginTop="308dp"
-                app:layout_constraintEnd_toStartOf="@+id/AuAu"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/usuario"
-                tools:ignore="MissingConstraints" />
-
-            <ImageView
-                android:id="@+id/bookcode"
-                android:layout_width="41dp"
-                android:layout_height="41dp"
-                android:layout_marginTop="380dp"
-                app:layout_constraintEnd_toStartOf="@+id/codecode"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/codigo_binario"
-                tools:ignore="MissingConstraints" />
-
-            <ImageView
-                android:id="@+id/bookISBN"
-                android:layout_width="41dp"
-                android:layout_height="41dp"
-                android:layout_marginTop="448dp"
-                app:layout_constraintEnd_toStartOf="@+id/ISBN"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/etiqueta_del_codigo_de_barras"
-                tools:ignore="MissingConstraints" />
-
-            <ImageView
-                android:id="@+id/fantasy"
-                android:layout_width="38dp"
-                android:layout_height="37dp"
-                android:layout_marginTop="532dp"
+                android:id="@+id/ImgType"
+                android:layout_width="50dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="7dp"
                 app:layout_constraintEnd_toStartOf="@+id/genero"
-                app:layout_constraintHorizontal_bias="0.789"
+                app:layout_constraintTop_toBottomOf="@+id/dateTIL"
+                app:srcCompat="@drawable/caballero__2_" />
+
+            <ImageView
+                android:id="@+id/ImgISBN"
+                android:layout_width="50dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="12dp"
+                app:layout_constraintEnd_toStartOf="@+id/isbnTIL"
+                app:layout_constraintTop_toBottomOf="@+id/codeTIL"
+                app:srcCompat="@drawable/etiqueta_del_codigo_de_barras" />
+
+            <ImageView
+                android:id="@+id/ImgCode"
+                android:layout_width="50dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="12dp"
+                app:layout_constraintEnd_toStartOf="@+id/codeTIL"
+                app:layout_constraintTop_toBottomOf="@+id/authorTIL"
+                app:srcCompat="@drawable/codigo_binario" />
+
+            <ImageView
+                android:id="@+id/ImgAuthor"
+                android:layout_width="50dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="12dp"
+                app:layout_constraintEnd_toStartOf="@+id/authorTIL"
+                app:layout_constraintTop_toBottomOf="@+id/nameTIL"
+                app:srcCompat="@drawable/usuario" />
+
+            <ImageView
+                android:id="@+id/ImgName"
+                android:layout_width="50dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="12dp"
+                app:layout_constraintEnd_toStartOf="@+id/nameTIL"
+                app:layout_constraintTop_toBottomOf="@+id/imageView7"
+                app:srcCompat="@drawable/libro" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/isbnTIL"
+                android:layout_width="230dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/castillo"
+                app:layout_constraintTop_toBottomOf="@+id/codeTIL">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/isbnTE"
+                    style="@style/NormalText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="ISBN" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Spinner
+                android:id="@+id/genero"
+                style="@style/NormalText.spinner"
+                android:layout_width="230dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="15dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/dateTIL"
                 tools:ignore="MissingConstraints" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/codeTIL"
+                android:layout_width="230dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/authorTIL">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/codeTE"
+                    style="@style/NormalText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/FormCode" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/authorTIL"
+                android:layout_width="230dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/nameTIL">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/authorTE"
+                    style="@style/NormalText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/FormAuthor" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/dateTIL"
+                android:layout_width="230dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/isbnTIL">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/dateTE"
+                    style="@style/NormalText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/FormPublication" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/nameTIL"
+                android:layout_width="230dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView7">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/nameTE"
+                    style="@style/NormalText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/FormName" />
+            </com.google.android.material.textfield.TextInputLayout>
 
             <ImageButton
                 android:id="@+id/deleteimg"
                 android:layout_width="85dp"
                 android:layout_height="100dp"
-                android:layout_marginStart="27dp"
+                android:layout_marginTop="21dp"
+                android:layout_marginEnd="30dp"
                 android:background="#00FFFFFF"
                 android:scaleType="fitCenter"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/delete"
+                app:layout_constraintTop_toBottomOf="@+id/available"
                 app:srcCompat="@drawable/eliminar__1_" />
 
             <ImageButton
                 android:id="@+id/save"
                 android:layout_width="85dp"
                 android:layout_height="100dp"
-                android:layout_marginEnd="20dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="21dp"
                 android:background="#00FFFFFF"
                 android:scaleType="fitCenter"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/delete"
+                app:layout_constraintTop_toBottomOf="@+id/available"
                 app:srcCompat="@drawable/guardar"
                 tools:ignore="MissingConstraints" />
 
@@ -113,158 +194,67 @@
                 android:id="@+id/delete"
                 android:layout_width="85dp"
                 android:layout_height="100dp"
-                android:layout_marginTop="600dp"
+                android:layout_marginTop="20dp"
                 android:background="#00FFFFFF"
                 android:scaleType="fitCenter"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/available"
                 app:srcCompat="@drawable/borrar"
                 tools:ignore="MissingConstraints" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/namename"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="230dp"
-                android:layout_marginEnd="30dp"
-                android:background="#FFFFFF"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Nombre"
-                    android:paddingLeft="10dp" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/AuAu"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="300dp"
-                android:layout_marginEnd="30dp"
-                android:background="#FFFFFF"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Autor"
-                    android:paddingLeft="10dp" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/codecode"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="370dp"
-                android:layout_marginEnd="30dp"
-                android:background="#FFFFFF"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Código"
-                    android:paddingLeft="10dp" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/ISBN"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="440dp"
-                android:layout_marginEnd="30dp"
-                android:background="#FFFFFF"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="ISBN"
-                    android:paddingLeft="10dp" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <ImageView
-                android:id="@+id/Image"
-                android:layout_width="148dp"
-                android:layout_height="146dp"
-                android:layout_marginTop="64dp"
-                android:background="@drawable/subirfoto"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.081"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+            <ImageButton
+                android:id="@+id/plus"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="18dp"
+                android:background="#00FFFFFF"
+                android:scaleType="fitCenter"
+                app:layout_constraintStart_toEndOf="@+id/genero"
+                app:layout_constraintTop_toBottomOf="@+id/dateTIL"
+                app:srcCompat="@drawable/mas"
+                tools:ignore="MissingConstraints" />
 
             <CheckBox
                 android:id="@+id/available"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="192dp"
-                android:layout_marginTop="166dp"
-                android:text="Disponible"
+                android:layout_marginTop="10dp"
+                android:buttonTint="#FFFFFF"
+                android:text="@string/FormAvailable"
+                android:textColor="#101D62"
                 android:textSize="24sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="MissingConstraints" />
-
-            <Spinner
-                android:id="@+id/genero"
-                android:layout_width="200dp"
-                android:layout_height="39dp"
-                android:layout_marginTop="532dp"
-                android:background="#FFFFFF"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.494"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="MissingConstraints" />
-
-            <ImageButton
-                android:id="@+id/plus"
-                android:layout_width="39dp"
-                android:layout_height="36dp"
-                android:layout_marginTop="532dp"
-                android:layout_marginEnd="56dp"
-                android:background="#00FFFFFF"
-                android:scaleType="fitCenter"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/mas" />
-
-            <TextView
-                android:id="@+id/Date"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="64dp"
-                android:layout_marginEnd="28dp"
-                android:text="Fecha de publicación"
-                android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.497"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/genero"
+                tools:ignore="MissingConstraints" />
+
+            <ImageView
+                android:id="@+id/imageView7"
+                android:layout_width="127dp"
+                android:layout_height="126dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/subirfoto"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/DDate"
-                android:layout_width="135dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="100dp"
-                android:layout_marginEnd="20dp"
-                android:background="#FFFFFF"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="dd/mm/aaaa" />
-            </com.google.android.material.textfield.TextInputLayout>
+            <ImageButton
+                android:id="@+id/buttonDate"
+                android:layout_width="50dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="12dp"
+                android:background="#00FFFFFF"
+                android:scaleType="fitCenter"
+                app:layout_constraintEnd_toStartOf="@+id/dateTIL"
+                app:layout_constraintTop_toBottomOf="@+id/isbnTIL"
+                app:srcCompat="@drawable/fecha"
+                tools:ignore="MissingConstraints" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

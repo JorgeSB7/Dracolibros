@@ -11,15 +11,15 @@
         app:showAsAction="always" />
 
     <item
-        android:id="@+id/action_Order"
+        android:id="@+id/Order"
         android:orderInCategory="100"
-        android:title="@string/Ordenar"
+        android:title="@string/Order"
         app:showAsAction="never" />
 
     <item
         android:id="@+id/action_Help"
         android:orderInCategory="100"
-        android:title="@string/Ayuda"
+        android:title="@string/Help"
         app:showAsAction="never" />
 
     <item
@@ -29,8 +29,8 @@
         app:showAsAction="never" />
 
     <item
-        android:id="@+id/action_settings"
+        android:id="@+id/settings"
         android:orderInCategory="100"
-        android:title="@string/Configuración"
+        android:title="@string/Setting"
         app:showAsAction="never" />
 </menu>
