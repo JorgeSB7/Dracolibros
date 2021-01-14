@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/formCTL"
     style="@style/Screens"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -16,14 +17,25 @@
         app:layout_constraintTop_toBottomOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/formCTL2"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imageView7"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="5dp"
+                app:layout_constraintEnd_toStartOf="@+id/ava"
+                app:layout_constraintTop_toBottomOf="@+id/genero"
+                app:srcCompat="@drawable/disponible" />
 
             <ImageView
                 android:id="@+id/ImgType"
                 android:layout_width="50dp"
                 android:layout_height="60dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="15dp"
                 android:layout_marginEnd="7dp"
                 app:layout_constraintEnd_toStartOf="@+id/genero"
                 app:layout_constraintTop_toBottomOf="@+id/dateTIL"
@@ -66,7 +78,7 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="12dp"
                 app:layout_constraintEnd_toStartOf="@+id/nameTIL"
-                app:layout_constraintTop_toBottomOf="@+id/imageView7"
+                app:layout_constraintTop_toBottomOf="@+id/buttonGallery"
                 app:srcCompat="@drawable/libro" />
 
             <com.google.android.material.textfield.TextInputLayout
@@ -155,7 +167,7 @@
                 android:layout_marginTop="15dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView7">
+                app:layout_constraintTop_toBottomOf="@+id/buttonGallery">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/nameTE"
@@ -174,7 +186,7 @@
                 android:background="#00FFFFFF"
                 android:scaleType="fitCenter"
                 app:layout_constraintEnd_toStartOf="@+id/delete"
-                app:layout_constraintTop_toBottomOf="@+id/available"
+                app:layout_constraintTop_toBottomOf="@+id/ava"
                 app:srcCompat="@drawable/eliminar__1_" />
 
             <ImageButton
@@ -186,7 +198,7 @@
                 android:background="#00FFFFFF"
                 android:scaleType="fitCenter"
                 app:layout_constraintStart_toEndOf="@+id/delete"
-                app:layout_constraintTop_toBottomOf="@+id/available"
+                app:layout_constraintTop_toBottomOf="@+id/ava"
                 app:srcCompat="@drawable/guardar"
                 tools:ignore="MissingConstraints" />
 
@@ -200,7 +212,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/available"
+                app:layout_constraintTop_toBottomOf="@+id/ava"
                 app:srcCompat="@drawable/borrar"
                 tools:ignore="MissingConstraints" />
 
@@ -218,7 +230,7 @@
                 tools:ignore="MissingConstraints" />
 
             <CheckBox
-                android:id="@+id/available"
+                android:id="@+id/ava"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -234,7 +246,7 @@
                 tools:ignore="MissingConstraints" />
 
             <ImageView
-                android:id="@+id/imageView7"
+                android:id="@+id/buttonGallery"
                 android:layout_width="127dp"
                 android:layout_height="126dp"
                 android:layout_marginTop="20dp"

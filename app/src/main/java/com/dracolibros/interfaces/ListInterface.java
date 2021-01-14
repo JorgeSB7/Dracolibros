@@ -13,5 +13,6 @@ public interface ListInterface {
         void onClickSearchButton();
         void onClickAboutAPPButton();
         void onClickRecyclerViewItem(String id);
+        public String getError(int error_code);
     }
 }

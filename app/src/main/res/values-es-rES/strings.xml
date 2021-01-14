@@ -40,4 +40,9 @@
     <string name="Order">Ordenar</string>
     <string name="Setting">Configuración</string>
     <string name="Help">Ayuda</string>
+    <string name="write_permission_denied">Debe permitir el acceso a la galería</string>
+    <string name="choose_picture">Elija una imagen</string>
+    <string name="DeleteD">El libro se ha elimanado correctamente</string>
+    <string name="ErrorDeleteD">Error al borrar</string>
+    <string name="SaveError">Todos los campos deben estar completos</string>
 </resources>

@@ -5,17 +5,34 @@ import com.dracolibros.R;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class BookEntity {
+import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
 
+public class BookEntity extends RealmObject {
+
+    // Debe existir una clave primaria para poder actualizar objetos
+    @PrimaryKey
     private String id;
+
     private String name;
     private String author;
     private String code;
     private String isbn;
     private String date;
     private String image;
+    private String genre;
+    private boolean available;
 
-    public BookEntity() {}
+    public BookEntity() {
+        this.name = "";
+        this.author = "";
+        this.code = "";
+        this.isbn = "";
+        this.date = "";
+        this.image = "";
+        this.genre = "";
+        this.available = false;
+    }
 
     public String getName() {
         return name;
@@ -84,6 +101,22 @@ public class BookEntity {
         } else {
             return false;
         }
+    }
+
+    public String getGenre() {
+        return genre;
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
+
+    public boolean isAvailable() {
+        return available;
+    }
+
+    public void setAvailable(boolean available) {
+        this.available = available;
     }
 
     //_____________________________________________IMG

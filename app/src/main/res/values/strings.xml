@@ -54,5 +54,10 @@
     <string name="bibliography">Bibliography</string>
     <string name="AdultNovel">AdultNovel</string>
     <string name="Results">10 Results</string>
+    <string name="choose_picture">" Choose image"</string>
+    <string name="write_permission_denied">You must allow access to the gallery</string>
+    <string name="DeleteD">The book has been successfully removed</string>
+    <string name="ErrorDeleteD">"Error while deleting "</string>
+    <string name="SaveError">All fields must be complete</string>
 
 </resources>

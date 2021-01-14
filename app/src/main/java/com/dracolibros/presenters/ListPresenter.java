@@ -1,8 +1,13 @@
 package com.dracolibros.presenters;
 
+import android.util.Log;
+
+import com.dracolibros.R;
 import com.dracolibros.interfaces.ListInterface;
+import com.dracolibros.views.MyApplication;
 
 public class ListPresenter implements ListInterface.Presenter {
+    String TAG = "Dracolibros/ListPresenter";
     private ListInterface.View view;
     public ListPresenter (ListInterface.View view) {this.view=view;}
 
@@ -22,6 +27,21 @@ public class ListPresenter implements ListInterface.Presenter {
         view.StartFormActivity(id);
     }
 
+    @Override
+    public String getError(int error_code) {
+        Log.d(TAG, "Starting toolbar");
+        String error_msg = "";
+        switch (error_code) {
+            case 1:
+                error_msg = MyApplication.getContext().getResources().getString(R.string.DeleteD);
+                break;
+            case 2:
+                error_msg = MyApplication.getContext().getResources().getString(R.string.ErrorDeleteD);
+                break;
+        }
+        return error_msg;
+    }
+
     /*
     @Override
     public void onSwipeRecyclerViewItem(String id) {
@@ -33,8 +53,6 @@ public class ListPresenter implements ListInterface.Presenter {
         // Decirle al view que muestre Toast
         view.showToast("error");
     }
-  
      */
-
 
 }

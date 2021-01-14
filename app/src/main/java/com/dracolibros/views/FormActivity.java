@@ -1,37 +1,53 @@
 package com.dracolibros.views;
 
+import android.Manifest;
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.content.res.ColorStateList;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
-import android.media.Image;
+import android.graphics.drawable.BitmapDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 
 import com.dracolibros.R;
 import com.dracolibros.interfaces.FormInterface;
 import com.dracolibros.model.BookEntity;
 import com.dracolibros.presenters.FormPresenter;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.app.ActivityCompat;
 
+import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -40,6 +56,9 @@ public class FormActivity extends AppCompatActivity implements FormInterface.Vie
     private FormInterface.Presenter presenter;
 
     String TAG = "Dracolibros/FormActivity";
+
+    CheckBox disp;
+    ImageView img;
 
     //_____CALENDAR
     Context myContext;
@@ -52,13 +71,29 @@ public class FormActivity extends AppCompatActivity implements FormInterface.Vie
     //_____SPINNER
     ImageButton buttonPlus;
 
-    //_____Nuevo
+    //_____ID LIBRO
     private String id;
+
+    //_____GALLERY
+    private static final int REQUEST_CAPTURE_IMAGE = 200;
+    private static final int REQUEST_SELECT_IMAGE = 201;
+    private Uri uri;
+
+    //_____PERMISO
+    final private int CODE_WRITE_EXTERNAL_STORAGE_PERMISSION = 123;
+    private ConstraintLayout constraintLayoutFormActivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Log.d(TAG, "Starting onCreate");
         super.onCreate(savedInstanceState);
+
+        BookEntity book;
+        book = new BookEntity();
+        disp = (CheckBox) findViewById(R.id.ava);
+
+        //_______GALLERY
+        constraintLayoutFormActivity = findViewById(R.id.formCTL);
 
         setContentView(R.layout.activity_form);
 
@@ -80,14 +115,6 @@ public class FormActivity extends AppCompatActivity implements FormInterface.Vie
         }
 
         presenter = new FormPresenter(this);
-
-        ImageButton save=(ImageButton) findViewById(R.id.save);
-        save.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                presenter.onClickSaveButton();
-            }
-        });
 
         buttonPlus = (ImageButton) findViewById(R.id.plus);
         Spinner spinner = (Spinner) findViewById(R.id.genero);
@@ -150,9 +177,6 @@ public class FormActivity extends AppCompatActivity implements FormInterface.Vie
 
         //_________________________________________________CONTROL-DE-ERRORES
 
-        BookEntity book;
-        book = new BookEntity();
-
         //_________________________________________________NAME-ERROR
         TextInputLayout nameTIL;
         TextInputEditText nameTE;
@@ -163,7 +187,7 @@ public class FormActivity extends AppCompatActivity implements FormInterface.Vie
             @Override
             public void onFocusChange(View view, boolean hasFocus) {
                 if (!hasFocus) {
-                    Log.d("FormActivity", "Exit EditText");
+                    Log.d(TAG, "Exit EditText");
                     if (book.setName(nameTE.getText().toString()) == false ) {
                         nameTIL.setError(presenter.getError("BookName"));
                         nameTIL.setErrorTextColor(ColorStateList.valueOf(Color.BLUE));
@@ -172,7 +196,7 @@ public class FormActivity extends AppCompatActivity implements FormInterface.Vie
                         nameTIL.setBoxStrokeColor(Color.GREEN);
                     }
                 }else{
-                    Log.d("FormActivity", "Input EditText");
+                    Log.d(TAG, "Input EditText");
                 }
             }
         });
@@ -187,7 +211,7 @@ public class FormActivity extends AppCompatActivity implements FormInterface.Vie
             @Override
             public void onFocusChange(View view, boolean hasFocus) {
                 if (!hasFocus) {
-                    Log.d("FormActivity", "Exit EditText");
+                    Log.d(TAG, "Exit EditText");
                     if (book.setAuthor(authorTE.getText().toString()) == false ) {
                         authorTIL.setError(presenter.getError("AuthorName"));
                         authorTIL.setErrorTextColor(ColorStateList.valueOf(Color.BLUE));
@@ -211,7 +235,7 @@ public class FormActivity extends AppCompatActivity implements FormInterface.Vie
             @Override
             public void onFocusChange(View view, boolean hasFocus) {
                 if (!hasFocus) {
-                    Log.d("FormActivity", "Exit EditText");
+                    Log.d(TAG, "Exit EditText");
                     if (book.setCode(codeTE.getText().toString()) == false ) {
                         codeTIL.setError(presenter.getError("BookCode"));
                         codeTIL.setErrorTextColor(ColorStateList.valueOf(Color.BLUE));
@@ -294,7 +318,7 @@ public class FormActivity extends AppCompatActivity implements FormInterface.Vie
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int day) {
                         // Asignar la fecha a un campo de texto
-                        editTextDate.setText(String.valueOf(day) + "/" + String.valueOf(month) + "/" + String.valueOf(year));
+                        editTextDate.setText(String.valueOf(day) + "/" + String.valueOf(month+1) + "/" + String.valueOf(year));
                     }
                 },Year, Month, Day);
                 // Mostrar el calendario
@@ -313,8 +337,6 @@ public class FormActivity extends AppCompatActivity implements FormInterface.Vie
             }
         });
 
-        //______________________________NUEVO2
-
         id = getIntent().getStringExtra("id");
 
         if (id != null){
@@ -322,8 +344,167 @@ public class FormActivity extends AppCompatActivity implements FormInterface.Vie
         } else {
             //Deshabilitar el botón eliminar
         }
+
+        //______________________________GALLERY
+        ImageView buttonGallery = (ImageView) findViewById(R.id.buttonGallery);
+        buttonGallery.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                presenter.onClickImage();
+            }
+        });
+
+        deleteIMG();
+
+        //_________________________________________________________________________SAVE
+        img = (ImageView) findViewById(R.id.buttonGallery);
+
+        ImageButton save=(ImageButton) findViewById(R.id.save);
+        save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(
+                    book.setName(nameTE.getText().toString()) &&
+                    book.setAuthor(authorTE.getText().toString()) &&
+                    book.setCode(codeTE.getText().toString()) &&
+                    book.setIsbn(isbnTE.getText().toString()) &&
+                    book.setDate(dateTE.getText().toString()) &&
+                    spinner.getSelectedItemPosition() !=0
+                ){
+                    //book.setAvailable(disp.isChecked());
+                    if(img!=null&&img.getDrawable()!=null){
+                        Bitmap bitmap = ((BitmapDrawable) img.getDrawable()).getBitmap();
+                        if(bitmap!=null){
+                            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+                            bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
+                            byte[] byteArray = byteArrayOutputStream.toByteArray();
+                            String fotoEnBase64 = Base64.encodeToString(byteArray, Base64.DEFAULT);
+                            book.setImage(fotoEnBase64);
+                        }
+                    }
+                    book.setGenre(spinner.getSelectedItem().toString());
+
+                    Log.d("Prueba", book.toString());
+                    presenter.onClickSaveButton(book);
+                } else {
+                    Toast.makeText(getApplicationContext(),presenter.getError("SaveError"),Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+
+        //_________________________________________________________________________SAVE-END
+
+    } //_________________FIN_DEL_ONCREATE_________________
+
+    //______________________________GALLERY
+
+    @Override
+    public void selectPicture(){
+        // Se le pide al sistema una imagen del dispositivo
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(
+                Intent.createChooser(intent, getResources().getString(R.string.choose_picture)),
+                REQUEST_SELECT_IMAGE);
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (requestCode) {
+
+            case (REQUEST_CAPTURE_IMAGE):
+                if (resultCode == Activity.RESULT_OK) {
+                    Log.d(TAG, "Starting onActivityResult OK");
+                    // Se carga la imagen desde un objeto URI al imageView
+                    ImageView imageView = findViewById(R.id.buttonGallery);
+                    imageView.setImageURI(uri);
+
+                    // Se le envía un broadcast a la Galería para que se actualice
+                    Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
+                    mediaScanIntent.setData(uri);
+                    sendBroadcast(mediaScanIntent);
+
+                } else if (resultCode == Activity.RESULT_CANCELED) {
+                    Log.d(TAG, "Starting onActivityResult CANCELED");
+                    // Se borra el archivo temporal
+                    File file = new File(uri.getPath());
+                    file.delete();
+                }
+                break;
+
+            case (REQUEST_SELECT_IMAGE):
+                if (resultCode == Activity.RESULT_OK) {
+                    // Se carga la imagen desde un objeto Bitmap
+                    Uri selectedImage = data.getData();
+                    String selectedPath = selectedImage.getPath();
+
+                    if (selectedPath != null) {
+                        // Se leen los bytes de la imagen
+                        InputStream imageStream = null;
+                        try {
+                            imageStream = getContentResolver().openInputStream(selectedImage);
+                        } catch (FileNotFoundException e) {
+                            e.printStackTrace();
+                        }
+
+                        // Se transformam los bytes de la imagen a un Bitmap
+                        Bitmap bmp = BitmapFactory.decodeStream(imageStream);
+
+                        // Se carga el Bitmap en el ImageView
+                        Bitmap imageScaled = Bitmap.createScaledBitmap(bmp, 200, 200, false);
+                        ImageView imageView = findViewById(R.id.buttonGallery);
+                        imageView.setImageBitmap(imageScaled);
+                    }
+                }
+                break;
+        }
+    }
+
+    @Override
+    public void deleteIMG(){
+        ImageButton deleteimg = (ImageButton) findViewById(R.id.deleteimg);
+        deleteimg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ImageView buttonGallery = findViewById(R.id.buttonGallery);
+                buttonGallery.setImageBitmap(null);
+            }
+        });
+    }
+
+    //______________________________PEDIR PERMISO
+    @Override
+    public void IntentChooser(){
+        Log.d(TAG, "Starting IntentChooser");
+        ActivityCompat.requestPermissions(FormActivity.this, new String[] {Manifest.permission.WRITE_EXTERNAL_STORAGE}, CODE_WRITE_EXTERNAL_STORAGE_PERMISSION);
+    }
+
+    @Override
+    public void showError(){
+        Log.d(TAG, "Starting showError");
+        Snackbar.make(findViewById(android.R.id.content), getResources().getString(R.string.write_permission_denied), Snackbar.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        switch (requestCode) {
+            case CODE_WRITE_EXTERNAL_STORAGE_PERMISSION:
+                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    Log.d(TAG, "Starting onRequestPermissionsResult GRANTED");
+                    presenter.PermissionGranted();
+                } else {
+                    Log.d(TAG, "Starting onRequestPermissionsResult DENIED");
+                    presenter.PermissionDenied();
+                }
+                break;
+            default:
+                super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
+    }
+
+    //______________________________AELRT DELETE
     @Override
     public void alertDelete(){
         Log.d(TAG, "Starting alertDelete");
@@ -333,7 +514,7 @@ public class FormActivity extends AppCompatActivity implements FormInterface.Vie
         builder.setPositiveButton(R.string.confirm, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                CloseFormActivity();
+                presenter.clicAcceptDelete();
                 // Toast.makeText(getApplicationContext(),"Yes button Clicked", Toast.LENGTH_LONG).show();
                 Log.i("Code2care ", "Yes button Clicked!");
             }

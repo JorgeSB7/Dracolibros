@@ -10,25 +10,31 @@
         android:id="@+id/imgbook"
         android:layout_width="100dp"
         android:layout_height="100dp"
+        android:background="@android:drawable/ic_menu_help"
+        android:paddingTop="5dp"
+        android:paddingEnd="5dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:src="@tools:sample/avatars"/>
+        tools:src="@tools:sample/avatars" />
 
     <TextView
         android:id="@+id/Nameb"
+        style="@style/RecyclerViewB.bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="32dp"
+        android:layout_marginLeft="12dp"
+        android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="@id/imgbook"
         app:layout_constraintLeft_toRightOf="@id/imgbook"
         app:layout_constraintTop_toTopOf="@id/imgbook"
-        tools:text="@tools:sample/last_names"/>
+        tools:text="@tools:sample/last_names" />
 
     <TextView
         android:id="@+id/Authorb"
+        style="@style/RecyclerViewB"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="32dp"
+        android:layout_marginLeft="12dp"
         app:layout_constraintBottom_toBottomOf="@id/imgbook"
         app:layout_constraintLeft_toRightOf="@id/imgbook"
         app:layout_constraintTop_toTopOf="@id/imgbook"
