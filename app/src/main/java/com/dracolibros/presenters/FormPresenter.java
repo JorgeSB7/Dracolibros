@@ -86,6 +86,11 @@ public class FormPresenter implements FormInterface.Presenter {
     }
 
     @Override
+    public BookEntity getbyid(String id) {
+        return BModel.getbyid(id);
+    }
+
+    @Override
     public void onClickImage() {
         int WriteExternalStoragePermission = ContextCompat.checkSelfPermission(MyApplication.getContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE);
         Log.d(TAG, "WRITE_EXTERNAL_STORAGE Permission: " + WriteExternalStoragePermission);

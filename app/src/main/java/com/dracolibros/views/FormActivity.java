@@ -19,6 +19,7 @@ import android.os.Bundle;
 import com.dracolibros.R;
 import com.dracolibros.interfaces.FormInterface;
 import com.dracolibros.model.BookEntity;
+import com.dracolibros.model.BookModel;
 import com.dracolibros.presenters.FormPresenter;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
@@ -71,8 +72,16 @@ public class FormActivity extends AppCompatActivity implements FormInterface.Vie
     //_____SPINNER
     ImageButton buttonPlus;
 
-    //_____ID LIBRO
+    //_____ATRIBUTOS LIBRO
     private String id;
+    private String name;
+    private String author;
+    private String code;
+    private String isbn;
+    private String date;
+    private String image;
+    private String genre;
+    private boolean available;
 
     //_____GALLERY
     private static final int REQUEST_CAPTURE_IMAGE = 200;
@@ -88,14 +97,15 @@ public class FormActivity extends AppCompatActivity implements FormInterface.Vie
         Log.d(TAG, "Starting onCreate");
         super.onCreate(savedInstanceState);
 
+        // PRIMERO
+        setContentView(R.layout.activity_form);
+
         BookEntity book;
         book = new BookEntity();
         disp = (CheckBox) findViewById(R.id.ava);
 
         //_______GALLERY
         constraintLayoutFormActivity = findViewById(R.id.formCTL);
-
-        setContentView(R.layout.activity_form);
 
         Log.d(TAG, "Starting toolbar");
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -326,6 +336,17 @@ public class FormActivity extends AppCompatActivity implements FormInterface.Vie
             }
         });
 
+        //______________________________GALLERY
+        ImageView buttonGallery = (ImageView) findViewById(R.id.buttonGallery);
+        buttonGallery.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                presenter.onClickImage();
+            }
+        });
+
+        deleteIMG();
+
         //_________________________________________________ALERT-DIALOG
 
         ImageButton delete=(ImageButton) findViewById(R.id.delete);
@@ -337,24 +358,48 @@ public class FormActivity extends AppCompatActivity implements FormInterface.Vie
             }
         });
 
-        id = getIntent().getStringExtra("id");
+        //_________________________________________________
+
+
+        String id = getIntent().getStringExtra("id");
+        Log.d(TAG, "id"+id);
+
+        /*
+        name = getIntent().getStringExtra("name");
+        author = getIntent().getStringExtra("author");
+        code = getIntent().getStringExtra("code");
+        isbn = getIntent().getStringExtra("isbn");
+        date = getIntent().getStringExtra("date");
+        image = getIntent().getStringExtra("image");
+        genre = getIntent().getStringExtra("genre");
+        available = getIntent().getBooleanExtra("available", false);
+         */
 
         if (id != null){
-            nameTE.setText(id);
+            BookEntity bk = presenter.getbyid(id);
+            book.setId(id);
+            image=bk.getImage();
+            byte[] decodedString = Base64.decode(image, Base64.DEFAULT);
+            Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+            buttonGallery.setImageBitmap(decodedByte);
+            available=bk.isAvailable();
+            disp.setChecked(available);
+            genre=bk.getGenre();
+            spinner.setSelection(adapter.getPosition(genre));
+            date=bk.getDate();
+            dateTE.setText(date);
+            name=bk.getName();
+            nameTE.setText(name);
+            author=bk.getAuthor();
+            authorTE.setText(author);
+            code=bk.getCode();
+            codeTE.setText(code);
+            isbn=bk.getIsbn();
+            isbnTE.setText(isbn);
+
         } else {
             //Deshabilitar el botón eliminar
         }
-
-        //______________________________GALLERY
-        ImageView buttonGallery = (ImageView) findViewById(R.id.buttonGallery);
-        buttonGallery.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                presenter.onClickImage();
-            }
-        });
-
-        deleteIMG();
 
         //_________________________________________________________________________SAVE
         img = (ImageView) findViewById(R.id.buttonGallery);
@@ -371,7 +416,7 @@ public class FormActivity extends AppCompatActivity implements FormInterface.Vie
                     book.setDate(dateTE.getText().toString()) &&
                     spinner.getSelectedItemPosition() !=0
                 ){
-                    //book.setAvailable(disp.isChecked());
+                    book.setAvailable(disp.isChecked());
                     if(img!=null&&img.getDrawable()!=null){
                         Bitmap bitmap = ((BitmapDrawable) img.getDrawable()).getBitmap();
                         if(bitmap!=null){
@@ -384,7 +429,7 @@ public class FormActivity extends AppCompatActivity implements FormInterface.Vie
                     }
                     book.setGenre(spinner.getSelectedItem().toString());
 
-                    Log.d("Prueba", book.toString());
+                    Log.d("Prueba SAVE", book.toString());
                     presenter.onClickSaveButton(book);
                 } else {
                     Toast.makeText(getApplicationContext(),presenter.getError("SaveError"),Toast.LENGTH_LONG).show();

@@ -4,12 +4,21 @@ import android.util.Log;
 
 import com.dracolibros.R;
 import com.dracolibros.interfaces.ListInterface;
+import com.dracolibros.model.BookEntity;
+import com.dracolibros.model.BookModel;
 import com.dracolibros.views.MyApplication;
+
+import java.util.ArrayList;
 
 public class ListPresenter implements ListInterface.Presenter {
     String TAG = "Dracolibros/ListPresenter";
     private ListInterface.View view;
-    public ListPresenter (ListInterface.View view) {this.view=view;}
+    private BookModel BModel;
+
+    public ListPresenter (ListInterface.View view) {
+        this.view=view;
+        this.BModel = new BookModel();
+    }
 
     @Override
     public void onClickFloatingButton() {
@@ -42,17 +51,15 @@ public class ListPresenter implements ListInterface.Presenter {
         return error_msg;
     }
 
-    /*
-    @Override
-    public void onSwipeRecyclerViewItem(String id) {
-        // Decirle al modelo que borre id
-        //.. luego en la Unidad 5
 
-        // Decirle al RV que lo elimino
-        view.removeRecyclerViewItem(id);
-        // Decirle al view que muestre Toast
-        view.showToast("error");
+    @Override
+    public ArrayList<BookEntity> getAllSummarize() {
+        return BModel.getAllSummarize();
     }
-     */
+
+    @Override
+    public BookEntity getbyid(String id) {
+        return BModel.getbyid(id);
+    }
 
 }

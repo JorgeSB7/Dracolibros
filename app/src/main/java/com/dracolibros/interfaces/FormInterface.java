@@ -11,6 +11,7 @@ public interface FormInterface {
         void selectPicture();
         void deleteIMG();
     }
+
     public interface Presenter{
         void onClickSaveButton(BookEntity book);
         void onClickDeleteButton();
@@ -18,7 +19,7 @@ public interface FormInterface {
         void clicAcceptDelete();
         void PermissionGranted();
         void PermissionDenied();
-
+        BookEntity getbyid (String id);
         //__________PERMISOS
         void onClickImage();
     }

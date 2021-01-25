@@ -13,7 +13,6 @@ public class BookEntity extends RealmObject {
     // Debe existir una clave primaria para poder actualizar objetos
     @PrimaryKey
     private String id;
-
     private String name;
     private String author;
     private String code;
@@ -24,12 +23,25 @@ public class BookEntity extends RealmObject {
     private boolean available;
 
     public BookEntity() {
+        this.id = "";
         this.name = "";
         this.author = "";
         this.code = "";
         this.isbn = "";
         this.date = "";
         this.image = "";
+        this.genre = "";
+        this.available = false;
+    }
+
+    public BookEntity(String id, String name, String author, String image) {
+        this.id = id;
+        this.name = name;
+        this.author = author;
+        this.code = "";
+        this.isbn = "";
+        this.date = "";
+        this.image = image;
         this.genre = "";
         this.available = false;
     }
