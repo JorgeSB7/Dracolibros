@@ -417,6 +417,7 @@ public class FormActivity extends AppCompatActivity implements FormInterface.Vie
                     spinner.getSelectedItemPosition() !=0
                 ){
                     book.setAvailable(disp.isChecked());
+                    Log.d(TAG, "Image " + img);
                     if(img!=null&&img.getDrawable()!=null){
                         Bitmap bitmap = ((BitmapDrawable) img.getDrawable()).getBitmap();
                         if(bitmap!=null){
@@ -507,6 +508,7 @@ public class FormActivity extends AppCompatActivity implements FormInterface.Vie
         }
     }
 
+    //______________________________LIMPIAR IMAGEN
     @Override
     public void deleteIMG(){
         ImageButton deleteimg = (ImageButton) findViewById(R.id.deleteimg);

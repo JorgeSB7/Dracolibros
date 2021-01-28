@@ -185,6 +185,7 @@ public class ListBookActivity extends AppCompatActivity implements ListInterface
         super.onResume();
         items.clear();
         items.addAll(presenter.getAllSummarize());
+        adapter.notifyDataSetChanged();
         size=(TextView) findViewById(R.id.ResultBook);
         size.setText(items.size()+" Resultados");
     }
@@ -313,6 +314,7 @@ public class ListBookActivity extends AppCompatActivity implements ListInterface
 
                     if(items.remove(position)==deletedBook){
                         adapter.notifyItemRemoved(position);
+                        presenter.delete(deletedBook);
                         size=(TextView) findViewById(R.id.ResultBook);
                         size.setText(items.size()+" Resultados");
                         Toast.makeText(getApplicationContext(),presenter.getError(1),Toast.LENGTH_LONG).show();

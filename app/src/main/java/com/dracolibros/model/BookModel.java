@@ -62,4 +62,24 @@ public class BookModel {
         realm.close();
         return book;
     }
+
+
+    public boolean delete (BookEntity b){
+        boolean result = false;
+        Log.d(TAG, ""+b);
+        Realm realm = Realm.getDefaultInstance();
+
+        realm.executeTransaction(r -> {
+            BookEntity bookRealm = realm.where(BookEntity.class)
+                .equalTo("id", b.getId())
+                .findFirst();
+
+                bookRealm.deleteFromRealm();
+            });
+
+            realm.close();
+
+            return result;
+    }
+
 }

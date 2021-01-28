@@ -20,5 +20,6 @@ public interface ListInterface {
         public String getError(int error_code);
         ArrayList<BookEntity> getAllSummarize();
         public BookEntity getbyid (String id);
+        public void delete (BookEntity b);
     }
 }

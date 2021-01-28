@@ -62,4 +62,9 @@ public class ListPresenter implements ListInterface.Presenter {
         return BModel.getbyid(id);
     }
 
+    @Override
+    public void delete(BookEntity b) {
+        BModel.delete(b);
+    }
+
 }
