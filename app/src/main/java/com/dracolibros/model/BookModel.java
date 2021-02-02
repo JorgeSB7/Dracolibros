@@ -82,4 +82,52 @@ public class BookModel {
             return result;
     }
 
+
+    public ArrayList<BookEntity> getWithFilter(String name, String date, String genre){
+        Realm realm = Realm.getDefaultInstance();
+
+        RealmResults<BookEntity> result;
+
+        if(date==null){
+            result = realm.where(BookEntity.class).contains("name", name)
+                    .contains("genre", genre)
+                    .findAll();
+        }else{
+            result = realm.where(BookEntity.class).contains("name", name)
+                    .equalTo("date", date)
+                    .contains("genre", genre)
+                    .findAll();
+        }
+
+        Log.d("Realm find items: ", "" + result.size());
+
+        ArrayList<BookEntity> bookList = new ArrayList<>();
+        bookList.addAll(realm.copyFromRealm(result));
+
+        realm.close();
+
+        ArrayList<BookEntity> bookListSummarize = new ArrayList<>();
+
+        for(BookEntity book: bookList){
+            BookEntity newBook = new BookEntity();
+            newBook.setId(book.getId());
+            newBook.setName(book.getName());
+            newBook.setGenre(book.getGenre());
+            newBook.setImage(book.getImage());
+            bookListSummarize.add(newBook);
+        }
+
+        return bookListSummarize;
+    }
+
+    public ArrayList<String> getGenres(){
+            Realm realm = Realm.getDefaultInstance();
+            RealmResults<BookEntity> c=realm.where(BookEntity.class).distinct("genre").findAll();
+            ArrayList<String> result=new ArrayList<>();
+            for (BookEntity b : c){
+                result.add(b.getGenre());
+            }
+            realm.close();
+            return result;
+    }
 }

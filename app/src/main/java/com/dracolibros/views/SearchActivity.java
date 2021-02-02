@@ -2,6 +2,7 @@ package com.dracolibros.views;
 
 import android.app.DatePickerDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -45,6 +46,9 @@ public class SearchActivity extends AppCompatActivity implements SearchInterface
     DatePickerDialog datePickerDialog2 ;
     int Year2, Month2, Day2 ;
 
+    EditText nainfoTE;
+    Spinner spinner;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Log.d(TAG, "Starting onCreate");
@@ -77,25 +81,25 @@ public class SearchActivity extends AppCompatActivity implements SearchInterface
             }
         });
 
-        Spinner spinner = (Spinner) findViewById(R.id.Searchspinner);
-        ArrayList<String> Searchspinner = new ArrayList();
-            Searchspinner.add(getString(R.string.GenreLite));
-            Searchspinner.add(getString(R.string.Fantasy));
-            Searchspinner.add(getString(R.string.Sciencefiction));
-            Searchspinner.add(getString(R.string.Romantic));
-            Searchspinner.add(getString(R.string.Horror));
-            Searchspinner.add(getString(R.string.CrimeNovel));
-            Searchspinner.add(getString(R.string.History));
-            Searchspinner.add(getString(R.string.bibliography));
-            Searchspinner.add(getString(R.string.AdultNovel));
-        spinner.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, Searchspinner));
+        String gene = "seleccionar";
+        spinner = (Spinner) findViewById(R.id.Searchspinner);
+        ArrayList<String> genero = presenter.getGenres();
+        ArrayList<String> gen = new ArrayList<>();
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, gen);
+        gen.add(gene);
+        for(String pg : genero){
+            gen.add(pg);
+        }
+
+        adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
 
         BookEntity book;
         book = new BookEntity();
 
         //_________________________________________________NAME-ERROR
         TextInputLayout nainfoTIL;
-        TextInputEditText nainfoTE;
+
         nainfoTE = findViewById(R.id.nainfoTE);
         nainfoTIL = findViewById(R.id.nainfoTIL);
 
@@ -173,6 +177,11 @@ public class SearchActivity extends AppCompatActivity implements SearchInterface
 
     @Override
     public void CloseSearchActivity() {
+        Intent i = getIntent();
+        i.putExtra("name", nainfoTE.getText().toString());
+        i.putExtra("spinner", spinner.getSelectedItemId());
+        i.putExtra("date", editTextDate2.getText().toString());
+        setResult(RESULT_OK, i);
         finish();
     }
 
@@ -190,9 +199,7 @@ public class SearchActivity extends AppCompatActivity implements SearchInterface
             Log.d(TAG, "Starting Help");
             return true;
         }
-
         return super.onOptionsItemSelected(item);
-
     }
 
     @Override

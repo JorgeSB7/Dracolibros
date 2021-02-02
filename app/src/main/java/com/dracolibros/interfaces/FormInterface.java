@@ -2,6 +2,8 @@ package com.dracolibros.interfaces;
 
 import com.dracolibros.model.BookEntity;
 
+import java.util.ArrayList;
+
 public interface FormInterface {
     public interface View{
         void CloseFormActivity();
@@ -20,8 +22,10 @@ public interface FormInterface {
         void PermissionGranted();
         void PermissionDenied();
         BookEntity getbyid (String id);
+        public ArrayList<String> getGenres();
         //__________PERMISOS
         void onClickImage();
+        public void delete (BookEntity b);
     }
 
 }

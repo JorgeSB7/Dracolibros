@@ -13,6 +13,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -92,6 +93,8 @@ public class FormActivity extends AppCompatActivity implements FormInterface.Vie
     final private int CODE_WRITE_EXTERNAL_STORAGE_PERMISSION = 123;
     private ConstraintLayout constraintLayoutFormActivity;
 
+    BookEntity book;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Log.d(TAG, "Starting onCreate");
@@ -100,7 +103,6 @@ public class FormActivity extends AppCompatActivity implements FormInterface.Vie
         // PRIMERO
         setContentView(R.layout.activity_form);
 
-        BookEntity book;
         book = new BookEntity();
         disp = (CheckBox) findViewById(R.id.ava);
 
@@ -128,7 +130,14 @@ public class FormActivity extends AppCompatActivity implements FormInterface.Vie
 
         buttonPlus = (ImageButton) findViewById(R.id.plus);
         Spinner spinner = (Spinner) findViewById(R.id.genero);
-        ArrayList<String> genero = new ArrayList();
+        ArrayList<String> genero = presenter.getGenres();
+        ArrayList<String> gen = new ArrayList<>();
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, gen);
+                for(String pg : genero){
+                    gen.add(pg);
+                }
+
+                /*
                 genero.add(getString(R.string.GenreLite));
                 genero.add(getString(R.string.Fantasy));
                 genero.add(getString(R.string.Sciencefiction));
@@ -138,7 +147,8 @@ public class FormActivity extends AppCompatActivity implements FormInterface.Vie
                 genero.add(getString(R.string.History));
                 genero.add(getString(R.string.bibliography));
                 genero.add(getString(R.string.AdultNovel));
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, genero);
+                 */
+
         adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
         buttonPlus.setOnClickListener(new View.OnClickListener() {
@@ -364,17 +374,6 @@ public class FormActivity extends AppCompatActivity implements FormInterface.Vie
         String id = getIntent().getStringExtra("id");
         Log.d(TAG, "id"+id);
 
-        /*
-        name = getIntent().getStringExtra("name");
-        author = getIntent().getStringExtra("author");
-        code = getIntent().getStringExtra("code");
-        isbn = getIntent().getStringExtra("isbn");
-        date = getIntent().getStringExtra("date");
-        image = getIntent().getStringExtra("image");
-        genre = getIntent().getStringExtra("genre");
-        available = getIntent().getBooleanExtra("available", false);
-         */
-
         if (id != null){
             BookEntity bk = presenter.getbyid(id);
             book.setId(id);
@@ -397,8 +396,13 @@ public class FormActivity extends AppCompatActivity implements FormInterface.Vie
             isbn=bk.getIsbn();
             isbnTE.setText(isbn);
 
+            if(image != null){
+                buttonGallery.setBackground(this.getResources().getDrawable(R.drawable.signo_de_interrogacion));
+            }
+
         } else {
-            //Deshabilitar el botón eliminar
+            delete.setEnabled(false);
+            delete.setBackground(this.getResources().getDrawable(R.drawable.no));
         }
 
         //_________________________________________________________________________SAVE
@@ -564,6 +568,7 @@ public class FormActivity extends AppCompatActivity implements FormInterface.Vie
                 presenter.clicAcceptDelete();
                 // Toast.makeText(getApplicationContext(),"Yes button Clicked", Toast.LENGTH_LONG).show();
                 Log.i("Code2care ", "Yes button Clicked!");
+                presenter.delete(book);
             }
         });
 

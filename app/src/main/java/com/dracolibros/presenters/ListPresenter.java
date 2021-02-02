@@ -67,4 +67,14 @@ public class ListPresenter implements ListInterface.Presenter {
         BModel.delete(b);
     }
 
+    @Override
+    public ArrayList<BookEntity> getItemsFilter(String name, String date, String genre) {
+        return BModel.getWithFilter(name, date, genre);
+    }
+
+    @Override
+    public ArrayList<String> getGenres() {
+        return BModel.getGenres();
+    }
+
 }

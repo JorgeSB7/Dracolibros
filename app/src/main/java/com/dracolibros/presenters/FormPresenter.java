@@ -13,6 +13,8 @@ import com.dracolibros.model.BookEntity;
 import com.dracolibros.model.BookModel;
 import com.dracolibros.views.MyApplication;
 
+import java.util.ArrayList;
+
 public class FormPresenter implements FormInterface.Presenter {
     private FormInterface.View view;
     String TAG = "Dracolibros/FormPresenter";
@@ -91,6 +93,11 @@ public class FormPresenter implements FormInterface.Presenter {
     }
 
     @Override
+    public ArrayList<String> getGenres() {
+        return BModel.getGenres();
+    }
+
+    @Override
     public void onClickImage() {
         int WriteExternalStoragePermission = ContextCompat.checkSelfPermission(MyApplication.getContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE);
         Log.d(TAG, "WRITE_EXTERNAL_STORAGE Permission: " + WriteExternalStoragePermission);
@@ -110,6 +117,11 @@ public class FormPresenter implements FormInterface.Presenter {
             // Permiso aceptado
                 view.selectPicture();
         }
+    }
+
+    @Override
+    public void delete(BookEntity b) {
+        BModel.delete(b);
     }
 
 }

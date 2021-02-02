@@ -2,11 +2,18 @@ package com.dracolibros.presenters;
 
 import com.dracolibros.R;
 import com.dracolibros.interfaces.SearchInterface;
+import com.dracolibros.model.BookModel;
 import com.dracolibros.views.MyApplication;
+
+import java.util.ArrayList;
 
 public class SearchPresenter implements SearchInterface.Presenter {
     private SearchInterface.View view;
-    public SearchPresenter (SearchInterface.View view) {this.view=view;}
+    private BookModel BModel;
+
+    public SearchPresenter (SearchInterface.View view) {this.view=view;
+        BModel = new BookModel();
+    }
 
     @Override
     public void onClickSearchButton() {
@@ -25,5 +32,10 @@ public class SearchPresenter implements SearchInterface.Presenter {
                 break;
         }
         return error_msg;
+    }
+
+    @Override
+    public ArrayList<String> getGenres() {
+        return BModel.getGenres();
     }
 }

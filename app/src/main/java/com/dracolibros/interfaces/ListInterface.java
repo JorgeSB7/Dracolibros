@@ -21,5 +21,7 @@ public interface ListInterface {
         ArrayList<BookEntity> getAllSummarize();
         public BookEntity getbyid (String id);
         public void delete (BookEntity b);
+        ArrayList<BookEntity> getItemsFilter(String name, String date, String genre);
+        public ArrayList<String> getGenres();
     }
 }
