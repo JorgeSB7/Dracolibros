@@ -81,7 +81,7 @@ public class SearchActivity extends AppCompatActivity implements SearchInterface
             }
         });
 
-        String gene = "seleccionar";
+        String gene = getString(R.string.selec);
         spinner = (Spinner) findViewById(R.id.Searchspinner);
         ArrayList<String> genero = presenter.getGenres();
         ArrayList<String> gen = new ArrayList<>();
@@ -177,6 +177,7 @@ public class SearchActivity extends AppCompatActivity implements SearchInterface
 
     @Override
     public void CloseSearchActivity() {
+        Log.d(TAG, "CloseSearchActivity");
         Intent i = getIntent();
         i.putExtra("name", nainfoTE.getText().toString());
         i.putExtra("spinner", spinner.getSelectedItemId());
@@ -193,6 +194,7 @@ public class SearchActivity extends AppCompatActivity implements SearchInterface
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        Log.d(TAG, "onOptionsItemSelected");
         int id = item.getItemId();
 
         if (id == R.id.Order) {

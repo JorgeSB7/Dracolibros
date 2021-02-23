@@ -45,4 +45,6 @@
     <string name="DeleteD">El libro se ha elimanado correctamente</string>
     <string name="ErrorDeleteD">Error al borrar</string>
     <string name="SaveError">Todos los campos deben estar completos</string>
+    <string name="result">" Resultados"</string>
+    <string name="selec">seleccionar</string>
 </resources>

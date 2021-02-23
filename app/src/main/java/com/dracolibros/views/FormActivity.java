@@ -137,18 +137,6 @@ public class FormActivity extends AppCompatActivity implements FormInterface.Vie
                     gen.add(pg);
                 }
 
-                /*
-                genero.add(getString(R.string.GenreLite));
-                genero.add(getString(R.string.Fantasy));
-                genero.add(getString(R.string.Sciencefiction));
-                genero.add(getString(R.string.Romantic));
-                genero.add(getString(R.string.Horror));
-                genero.add(getString(R.string.CrimeNovel));
-                genero.add(getString(R.string.History));
-                genero.add(getString(R.string.bibliography));
-                genero.add(getString(R.string.AdultNovel));
-                 */
-
         adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
         buttonPlus.setOnClickListener(new View.OnClickListener() {

@@ -59,5 +59,7 @@
     <string name="DeleteD">The book has been successfully removed</string>
     <string name="ErrorDeleteD">"Error while deleting "</string>
     <string name="SaveError">All fields must be complete</string>
+    <string name="result">" Results"</string>
+    <string name="selec">select</string>
 
 </resources>
