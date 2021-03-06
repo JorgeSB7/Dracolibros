@@ -60,13 +60,13 @@ public class HelpActivity extends AppCompatActivity {
 
         String help= getIntent().getStringExtra("help");
         if(help.equals("form")){
-            mWebview.loadUrl("https://alberto34315.github.io/RingBox/form.html");
+            mWebview.loadUrl("https://jorgesb7.github.io/Dracolibros/form.html");
         }else if(help.equals("list")){
-            mWebview.loadUrl("https://alberto34315.github.io/RingBox/list.html");
+            mWebview.loadUrl("https://jorgesb7.github.io/Dracolibros/list.html");
         }else if(help.equals("search")){
-            mWebview.loadUrl("https://alberto34315.github.io/RingBox/search.html");
+            mWebview.loadUrl("https://jorgesb7.github.io/Dracolibros/search.html");
         }else{
-            mWebview.loadUrl("https://alberto34315.github.io/RingBox/");
+            mWebview.loadUrl("https://jorgesb7.github.io/Dracolibros/");
         }
         //   setContentView(mWebview);
 
