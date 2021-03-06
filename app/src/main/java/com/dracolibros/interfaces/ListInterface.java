@@ -10,6 +10,7 @@ public interface ListInterface {
         void StartFormActivity(String id);
         void StartSearchActivity();
         void StartAboutAPPActivity();
+        void startHelpActivity();
     }
 
     public interface Presenter{
@@ -23,5 +24,6 @@ public interface ListInterface {
         public void delete (BookEntity b);
         ArrayList<BookEntity> getItemsFilter(String name, String date, String genre);
         public ArrayList<String> getGenres();
+        void onClickMenuHelp();
     }
 }

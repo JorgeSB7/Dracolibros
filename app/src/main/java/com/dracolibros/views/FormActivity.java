@@ -589,6 +589,14 @@ public class FormActivity extends AppCompatActivity implements FormInterface.Vie
     }
 
     @Override
+    public void startHelpActivity() {
+        Log.d(TAG, "startHelpActivity.....");
+        Intent intent = new Intent(getApplicationContext(), HelpActivity.class);
+        intent.putExtra("help", "form");
+        startActivity(intent);
+    }
+
+    @Override
     protected void onResume() {
         Log.d(TAG, "Starting onResume");
         super.onResume();

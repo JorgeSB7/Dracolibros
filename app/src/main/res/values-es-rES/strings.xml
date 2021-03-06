@@ -47,4 +47,6 @@
     <string name="SaveError">Todos los campos deben estar completos</string>
     <string name="result">" Resultados"</string>
     <string name="selec">seleccionar</string>
+    <string name="title_help">ayuda</string>
+    <string name="title_activity_help">AYUDA</string>
 </resources>

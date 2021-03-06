@@ -193,6 +193,14 @@ public class SearchActivity extends AppCompatActivity implements SearchInterface
     }
 
     @Override
+    public void startHelpActivity() {
+        Log.d(TAG, "startHelpActivity.....");
+        Intent intent = new Intent(getApplicationContext(), HelpActivity.class);
+        intent.putExtra("help", "search");
+        startActivity(intent);
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         Log.d(TAG, "onOptionsItemSelected");
         int id = item.getItemId();

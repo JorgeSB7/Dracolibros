@@ -61,5 +61,7 @@
     <string name="SaveError">All fields must be complete</string>
     <string name="result">" Results"</string>
     <string name="selec">select</string>
+    <string name="title_activity_help">HELP</string>
+    <string name="title_help">help</string>
 
 </resources>

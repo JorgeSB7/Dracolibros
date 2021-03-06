@@ -288,6 +288,15 @@ public class ListBookActivity extends AppCompatActivity implements ListInterface
         startActivity(intent);
     }
 
+    //___________________________________________________HELP
+    @Override
+    public void startHelpActivity() {
+        Log.d(TAG, "startHelpActivity.....");
+        Intent intent = new Intent(getApplicationContext(), HelpActivity.class);
+        intent.putExtra("help", "list");
+        startActivity(intent);
+    }
+
     //________________________________Swiped BORRAR
     BookEntity deletedBook = null;
 

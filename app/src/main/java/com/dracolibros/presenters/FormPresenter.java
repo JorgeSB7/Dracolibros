@@ -124,4 +124,10 @@ public class FormPresenter implements FormInterface.Presenter {
         BModel.delete(b);
     }
 
+    @Override
+    public void onClickMenuHelp() {
+        Log.d(TAG,"onClickMenuHelp.....");
+        view.startHelpActivity();
+    }
+
 }

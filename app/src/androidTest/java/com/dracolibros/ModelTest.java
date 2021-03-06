@@ -75,10 +75,6 @@ public class ModelTest {
     public void searchBook(){
         ArrayList<BookEntity> books = new ArrayList<>();
         books.add(this.bookEntity);
-
-        //assertEquals(books.get(0).getName(), this.bookModel.getWithFilter("", "", "").get(0).getName());
-        //assertEquals(books.get(0).getName(), this.bookModel.getWithFilter("Dragones rojos ", "", "").get(0).getName());
-        //assertEquals(books.get(0).getName(), this.bookModel.getWithFilter("", "", "Fantasía").get(0).getName());
         assertEquals(books.get(0).getName(), this.bookModel.getWithFilter("Dragones rojos", "1/1/1995", "Fantasía").get(0).getName());
         assertEquals(0, this.bookModel.getWithFilter("El castillo azul", "", "").size());
     }

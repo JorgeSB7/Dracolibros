@@ -77,4 +77,9 @@ public class ListPresenter implements ListInterface.Presenter {
         return BModel.getGenres();
     }
 
+    @Override
+    public void onClickMenuHelp() {
+        Log.d(TAG,"onClickMenuHelp.....");
+        view.startHelpActivity();
+    }
 }

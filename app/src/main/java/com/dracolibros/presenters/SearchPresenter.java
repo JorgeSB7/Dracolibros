@@ -1,5 +1,7 @@
 package com.dracolibros.presenters;
 
+import android.util.Log;
+
 import com.dracolibros.R;
 import com.dracolibros.interfaces.SearchInterface;
 import com.dracolibros.model.BookModel;
@@ -8,6 +10,7 @@ import com.dracolibros.views.MyApplication;
 import java.util.ArrayList;
 
 public class SearchPresenter implements SearchInterface.Presenter {
+    String TAG = "Dracolibros/SearchPresenter";
     private SearchInterface.View view;
     private BookModel BModel;
 
@@ -37,5 +40,11 @@ public class SearchPresenter implements SearchInterface.Presenter {
     @Override
     public ArrayList<String> getGenres() {
         return BModel.getGenres();
+    }
+
+    @Override
+    public void onClickMenuHelp() {
+        Log.d(TAG,"onClickMenuHelp.....");
+        view.startHelpActivity();
     }
 }

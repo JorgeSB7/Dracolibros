@@ -12,6 +12,7 @@ public interface FormInterface {
         void showError();
         void selectPicture();
         void deleteIMG();
+        void startHelpActivity();
     }
 
     public interface Presenter{
@@ -26,6 +27,7 @@ public interface FormInterface {
         //__________PERMISOS
         void onClickImage();
         public void delete (BookEntity b);
+        void onClickMenuHelp();
     }
 
 }

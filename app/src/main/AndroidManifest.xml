@@ -12,11 +12,16 @@
         android:label="@string/app_name"
         android:roundIcon="@drawable/draclroborous"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Dracolibros">
+        android:theme="@style/Theme.Dracolibros"
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".views.HelpActivity"
+            android:label="@string/title_activity_help"
+            android:theme="@style/Theme.Dracolibros.NoActionBar"></activity>
         <activity
             android:name=".views.AboutAPPActivity"
             android:label="@string/title_activity_about_a_p_p"
-            android:theme="@style/Theme.Dracolibros.NoActionBar"></activity>
+            android:theme="@style/Theme.Dracolibros.NoActionBar" />
         <activity
             android:name=".views.SearchActivity"
             android:label="@string/title_activity_search"
