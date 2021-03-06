@@ -242,6 +242,7 @@ public class ListBookActivity extends AppCompatActivity implements ListInterface
 
         if (id == R.id.action_Help) {
             Log.d(TAG, "Starting Help");
+            presenter.onClickMenuHelp();
             return true;
         }
 

@@ -202,11 +202,11 @@ public class SearchActivity extends AppCompatActivity implements SearchInterface
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        Log.d(TAG, "onOptionsItemSelected");
         int id = item.getItemId();
 
         if (id == R.id.Order) {
             Log.d(TAG, "Starting Help");
+            presenter.onClickMenuHelp();
             return true;
         }
         return super.onOptionsItemSelected(item);

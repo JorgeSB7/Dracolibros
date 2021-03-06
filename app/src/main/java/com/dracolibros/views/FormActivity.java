@@ -641,9 +641,9 @@ public class FormActivity extends AppCompatActivity implements FormInterface.Vie
 
         if (id == R.id.Order) {
             Log.d(TAG, "Starting Help");
+            presenter.onClickMenuHelp();
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
