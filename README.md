@@ -1,5 +1,5 @@
 # Dracolibros
-Aplicación desarrollada para la asignatura Desarrollo de Interfaces, la app se basa en un CRUD en el cual puedes gestionar datos de libros.
+Dracolibros simula una aplicación de gestión de libros para bibliotecas o librerías. Desarrollada en Java y utilizando como entorno de desarrollo Android Studio. Emplea Realm para proporcionar una base de datos nativa y eficiente. Este proyecto representa el trabajo completo correspondiente a la asignatura de Desarrollo de Interfaces.
 
 ## Inicio 
 
